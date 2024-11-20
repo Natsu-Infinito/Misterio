@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', sans-serif;
+    box-sizing: border-box;
+}
+
+#container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#partyButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    font-size: 24px;
+}
+
+#emoji {
+    display: block;
+    font-size: 100px;
+}
+
+#partyButton span {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.word {
+    display: inline-block;
+    font-size: 3em;
+    color: BlueViolet;
+    position: relative;
+    opacity: 0;
+}
+
+#word1 {
+    animation: slideInTopLeft 2s ease-out forwards;
+}
+
+#word2 {
+    animation: slideInTopRight 2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+#word3 {
+    animation: slideInBottomLeft 2s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes slideInTopLeft {
+    0% {
+        transform: translate(-100vw, -100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInTopRight {
+    0% {
+        transform: translate(100vw, -100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInBottomLeft {
+    0% {
+        transform: translate(-100vw, 100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    background-color: red;
+    opacity: 0.7;
+    animation: confettiFall 3s ease-out forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) rotate(var(--rotate));
+    }
+}
+
+.balloon {
+    width: 30px;
+    height: 50px;
+    position: absolute;
+    bottom: -100px;
+    border-radius: 50% 50% 45% 45%;
+    background-color: red;
+    animation: rise 6s ease-in-out forwards;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+
+/* Mensagem adicional */
+#extraMessage {
+    font-size: 2em;
+    color: BlueViolet;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    margin-top: 20px;
+    position: absolute;
+    top: 45%; /* Ajustado para aparecer abaixo da mensagem principal */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #partyButton {
+        font-size: 20px;
+    }
+
+    #emoji {
+        font-size: 80px;
+    }
+
+    .word {
+        font-size: 2em;
+    }
+
+    #extraMessage {
+        font-size: 1.5em;
+    }
+}
